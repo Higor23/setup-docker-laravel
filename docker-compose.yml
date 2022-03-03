@@ -1,14 +1,15 @@
 version: "3.7"
 services:
     # image project
-    produtos:
+    app:
+        container_name: higor23
         build: 
             args: 
                 user: higor
                 uid: 1000
-            context: ./
+            context: .
             dockerfile: Dockerfile
-        image: laravel-app
+        image: higor23/laravel-app
         restart: unless-stopped
         working_dir: /var/www/
         volumes:
@@ -21,6 +22,7 @@ services:
     
     # nginx
     nginx:
+        container_name: higor23-nginx
         image: nginx:alpine
         restart: unless-stopped
         ports: 
@@ -33,6 +35,7 @@ services:
 
     # db mysql
     mysql:
+        container_name: higor23-mysql
         image: mysql:5.7.22
         restart: unless-stopped
         environment: 
@@ -49,6 +52,7 @@ services:
 
      #phpmyadmin
     phpmyadmin:
+        container_name: higor23-phpmyadmin
         image: phpmyadmin/phpmyadmin
         container_name: phpmyadmin
         restart: always
@@ -61,6 +65,7 @@ services:
         
     # queue
     queue:
+        container_name: higor23-queue
         build: 
             args: 
                 user: higor
@@ -78,6 +83,7 @@ services:
 
     # redis
     redis:
+        container_name: higor23-redis
         image: redis:latest
         networks: 
             - project
