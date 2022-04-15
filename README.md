@@ -13,7 +13,7 @@ Remova o versionamento
 rm -rf .git/
 ```
 
-Copie e cole o conteúdo abaixo no arquivo .env
+Copie o conteúdo abaixo para a área de transferência
 ```dosini
 APP_NAME=Laravel
 APP_ENV=local
