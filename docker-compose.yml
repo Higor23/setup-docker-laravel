@@ -2,14 +2,14 @@ version: "3.7"
 services:
     # image project
     app:
-        container_name: higor23
+        container_name: project_name
         build: 
             args: 
-                user: higor
+                user: username
                 uid: 1000
             context: .
             dockerfile: Dockerfile
-        image: higor23/laravel-app
+        image: project_name/laravel-app
         restart: unless-stopped
         working_dir: /var/www/
         volumes:
@@ -22,7 +22,7 @@ services:
     
     # nginx
     nginx:
-        container_name: higor23-nginx
+        container_name: project_name-nginx
         image: nginx:alpine
         restart: unless-stopped
         ports: 
@@ -35,7 +35,7 @@ services:
 
     # db mysql
     mysql:
-        container_name: higor23-mysql
+        container_name: project_name-mysql
         image: mysql:5.7.22
         restart: unless-stopped
         environment: 
@@ -52,12 +52,11 @@ services:
 
      #phpmyadmin
     phpmyadmin:
-        container_name: higor23-phpmyadmin
+        container_name: project_name-phpmyadmin
         image: phpmyadmin/phpmyadmin
-        container_name: phpmyadmin
         restart: always
         ports:
-            - '8081:80'
+            - '8084:80'
         environment:
             PMA_HOST: mysql
         networks: 
@@ -65,10 +64,10 @@ services:
         
     # queue
     queue:
-        container_name: higor23-queue
+        container_name: project_name-queue
         build: 
             args: 
-                user: higor
+                user: username
                 uid: 1000
             context: ./
             dockerfile: Dockerfile
@@ -83,7 +82,7 @@ services:
 
     # redis
     redis:
-        container_name: higor23-redis
+        container_name: project_name-redis
         image: redis:latest
         networks: 
             - project
